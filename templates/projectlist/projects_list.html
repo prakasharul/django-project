@@ -1,0 +1,28 @@
+{% extends 'testapp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load table_tags %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="clearfix">&nbsp;</div>
+		<div class="clearfix">&nbsp;</div>
+		<div class="row">
+			<div class="col-lg-2 col-md-3">
+				<ul class="list-group">
+					<li class="list-group-item">{{user.username}}</li>
+					<li class="list-group-item"><a href="{% url 'projects' %}">projects</a></li>
+					<li class="list-group-item"><a href="{% url 'logout'  %}">Logout</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-10 col-md-9">
+				<h3>Project List <span class="label label-primary"><a href="{% url 'project-add' %}" style="color:#fff">Add</a></span></h3>
+				<div class="container-fluid">
+
+					{% render_table projectz %}
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+{% endblock %}
