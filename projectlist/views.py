@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from datatableview.views import DatatableView
 from django.contrib.auth.models import User
 
 from . models import projects
@@ -18,6 +17,11 @@ def projects_list(request):
 	return render(request, "projectlist/projects_list.html", {'projectz':projectz})
 
 def project_new(request):
-	form = 	projectForm
+	
+	if request.method == 'POST':
+		instance = projectForm
+
+	else:
+		form = 	projectForm	
 	return render(request, 'projectlist/project_edit.html', {'project_form': form})	
 
