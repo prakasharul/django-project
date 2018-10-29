@@ -18,7 +18,31 @@
 				<h3>Project List <span class="label label-primary"><a href="{% url 'project-add' %}" style="color:#fff">Add</a></span></h3>
 				<div class="container-fluid">
 
-					{% render_table projectz %}
+					<table class="table datatable" id="project_list">
+						<thead>
+							<tr>
+								<th>S.no</th>
+								<th>Name</th>
+								<th>Client</th>
+								<th>capital</th>
+								<th>target date</th>
+								<th>action</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							{% for project in data %}
+							<tr>
+								<td>{{project.id}}</td>
+								<td>{{project.name}}</td>
+								<td>{{project.client}}</td>
+								<td>{{project.budget}}</td>
+								<td>{{project.target_date}}</td>
+								<td><a href="{% url 'project-update' pk=project.id %}">update</a> | <a href="{% url 'project-delete' pk=project.id %}">delete</a></td>
+								<tr>
+							{% endfor %}		
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
