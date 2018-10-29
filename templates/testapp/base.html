@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{{SITE_Name}}</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		{% load static %}
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<style type="text/css">
-			.form-container{
-				position: absolute;
-				left: 0;right: 0;
-				/*top: 0;
+
+<head>
+    <title>{{SITE_Name}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css
+">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <style type="text/css">
+    .form-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        /*top: 0;
 				bottom: 0;*/
-				margin-top: 20px;
-				margin: auto;
-				max-width: 350px;
-				padding: 20px;
-				background-color: #f2f2f2;
-			}
-		</style>
-	</head>
-	<body>
-		{% block content %}
-		{% endblock %}
-		
-	</body>
+        margin-top: 20px;
+        margin: auto;
+        max-width: 350px;
+        padding: 20px;
+        background-color: #f2f2f2;
+    }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#project_list').DataTable();
+    });
+    </script>
+</head>
+
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+
 </html>
