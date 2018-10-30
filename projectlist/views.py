@@ -11,8 +11,10 @@ from . models import projects
 from . forms import projectForm
 from . serializer import projectListSerializer
 
+
 class projectViewSet(viewsets.ModelViewSet):
 	"""project rest view set"""
+	
 	queryset = projects.objects.all().order_by('name')
 	serializer_class = projectListSerializer
 
@@ -21,12 +23,13 @@ class projectViewSet(viewsets.ModelViewSet):
 @login_required(login_url='/login/')
 def projects_list(request):
 	"""fetch project list """
+
 	data = projects.objects.all()
 	return render(request, "projectlist/projects_list.html", {'data':data})
 
+
 @login_required(login_url='/login/')
 def project_new(request):
-
 	""" create new project"""
 
 	form = 	projectForm(request.POST or None)
@@ -35,8 +38,8 @@ def project_new(request):
 		return redirect('projects')
 	else:
 		form = 	projectForm(request.GET or None)	
-
 	return render(request, 'projectlist/project_edit.html', {'project_form': form})	
+
 
 @login_required(login_url='/login/')
 def project_update(request, pk):
@@ -44,7 +47,6 @@ def project_update(request, pk):
 
 	project = get_object_or_404(projects, pk=pk)
 	form =  projectForm(request.POST or None, instance=project)
-
 	if form.is_valid():
 		form.save()
 		return redirect('projects')
@@ -59,7 +61,6 @@ def project_delete(request, pk):
 	"""project delete by id"""
 
 	project = get_object_or_404(projects, pk=pk)
-
 	if project:
 		project.delete()
 		return redirect('projects')

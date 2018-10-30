@@ -7,7 +7,7 @@ class projects(models.Model):
 	name = models.CharField(max_length=10)
 	client=models.CharField(max_length=20)
 	budget= models.IntegerField()
-	mobile = models.IntegerField()
+	mobile = models.BigIntegerField()
 	email = models.EmailField(max_length=254)
 	resource = models.IntegerField()
 	duration = models.IntegerField()
