@@ -4,15 +4,18 @@ from django.http import HttpResponse
 
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
 
 
 from . models import projects
-
 from . forms import projectForm
+from . serializer import projectListSerializer
 
-# class projectList(DatatableView):
-# 	model = projects
-# 	# template_name="projectslist.html"
+class projectViewSet(viewsets.ModelViewSet):
+	"""project rest view set"""
+	queryset = projects.objects.all().order_by('name')
+	serializer_class = projectListSerializer
+
 
 
 @login_required(login_url='/login/')
@@ -62,8 +65,6 @@ def project_delete(request, pk):
 		return redirect('projects')
 
 	return HttpResponse(status=405)	
-
-
 
 
 
